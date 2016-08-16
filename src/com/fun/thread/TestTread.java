@@ -7,8 +7,9 @@ package com.fun.thread;
 public class TestTread implements Runnable{
 
     public enum Type {
-        Static("静态变量" ,1), PROPERTY("静态变量" ,1) , FUNVAR("静态变量" ,1);
+        Static("静态变量" ,1), PROPERTY("类属性" ,2) , FUNVAR("临时变量" ,3);
 
+        //尝试枚举。。。所以写了这么个没啥用的东西
         private Type(String name, Integer index) {
             this.name = name;
             this.index = index;
@@ -46,7 +47,7 @@ public class TestTread implements Runnable{
                 break;
         }
     }
-
+    
     private void runStatic() {
         while(true){
             if( numStatic > 0) {
