@@ -24,8 +24,8 @@ public class TestTread implements Runnable{
     };
 
     private Type whichType;
-    private Integer num = 10;
-    private static Integer numStatic = 10;
+    private Integer num = 4;
+    private static Integer numStatic = 4;
     private String name;
 
     public TestTread(String name, Type type) {
@@ -47,7 +47,7 @@ public class TestTread implements Runnable{
                 break;
         }
     }
-    
+
     private void runStatic() {
         while(true){
             if( numStatic > 0) {
@@ -71,7 +71,7 @@ public class TestTread implements Runnable{
     }
 
     private void runVar() {
-        Integer num = 10;
+        Integer num = 4;
         while(true){
             if( num > 0) {
                 System.out.println(name + ":" + num);
