@@ -17,5 +17,4 @@ public class testGenerics<T> {
     public T getData() {
         return this.data;
     }
-
 }

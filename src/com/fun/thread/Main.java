@@ -1,6 +1,10 @@
 package com.fun.thread;
 
+import com.fun.file.FileTest;
 import com.fun.generics.*;
+
+import java.io.IOException;
+
 /**
  * Created by fun on 16/8/10.
  */
@@ -18,6 +22,12 @@ public class Main {
         System.out.println(a.getData());
         System.out.println(b.getData());
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        FileTest f = new FileTest();
+        try {
+            f.fileRead();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
