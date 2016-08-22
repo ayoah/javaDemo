@@ -3,7 +3,9 @@ package com.fun.thread;
 import com.fun.file.FileTest;
 import com.fun.generics.*;
 
-import java.io.IOException;
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * Created by fun on 16/8/10.
@@ -12,6 +14,15 @@ public class Main {
 
 
     public static void main(String[] args) {
+        try {
+            javaSocket();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void java201608() {
         // write your code here
         System.out.println("Hello, World");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -30,6 +41,36 @@ public class Main {
         }
     }
 
+    private static void javaSocket() throws Exception{
+
+        ServerSocket server = new ServerSocket(4001);//bind port
+
+        Socket socket = server.accept();//accept
+
+        String line; //input read string
+
+        //get read line
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+        //output
+        PrintWriter output = new PrintWriter(socket.getOutputStream());
+
+        boolean flag = true;
+
+        while(flag && (line = bufferedReader.readLine()) != null ) {
+            System.out.println(line);
+            output.println(line);
+            output.flush();
+            if (line.equals("exit")) {
+                output.println("byebye");
+                output.flush();
+                bufferedReader.close();
+                output.close();
+                socket.close();
+                flag = false;
+            }
+        }
+    }
 
     private static void threadDemo() {
         TestTread t = new TestTread("入口一", TestTread.Type.FUNVAR);
